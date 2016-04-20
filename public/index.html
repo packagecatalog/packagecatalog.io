@@ -11,21 +11,278 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 		<style>
 
 			body {
 			    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+				background:#F0F0F0;
+				font-family: 'Open Sans', sans-serif;
+			}
+			
+			body div {
+				font-family: 'Open Sans', sans-serif !important;
+			}
+			
+			a {
+				color:#000;
+			}
+			
+			*[ui-sref] {
+				cursor:pointer;
 			}
 
 			.portfolio-item {
-			    margin-bottom: 25px;
+			    margin: 15px;
+				padding:5px 15px 5px 15px;
+/*				border:1px solid #EAEAEA;*/
+				min-height:230px;
+/*				background:#FFF;*/
+				border-radius: 2px;
+				max-height:230px;
+			}
+			
+			.portfolio-item p {
+				max-height:100px;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
 			}
 
 			footer {
 			    margin: 50px 0;
 			}
 			
+			nav.navbar {
+				background-color: #FB9C44;
+			    background-image: linear-gradient(to left, #FB9C44, #FC4831);
+/*			    height: 143px;*/
+			    z-index: 9999;
+			}
+			
+			nav.navbar a {
+				color:#FFF;
+/*				line-height: 1.85714;*/
+				font-size:20px;
+				    font-weight: 300;
+				    letter-spacing: 1px;
+			}
+			
+			.container-shade {
+				background-image: linear-gradient(to left, #F1E7DF, #F1DFDD);
+/*				background:rgba(240, 240, 240, 0.9);*/
+				margin-top:-20px;
+/*				padding-top:20px;*/
+				box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+				max-height:92px;
+				min-height:92px;
+			}
+
+			.card {
+
+			  border-radius: 2px;
+			  display: block;
+			  float: left;
+			  height: 300px;
+			  margin: 1rem;
+			  position: relative;
+			  width: 300px;
+			}
+
+			.card-1 {
+			  background: rgba(255,255,255,1);
+			  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			  transition: all 0.2s ease-in-out;
+			  position:relative;
+			  overflow:hidden;
+			}
+			
+			div.card-1:before {
+			  content: '';
+			  position: absolute;
+			  top: 0; left: 0;
+			  width: 200%; height: 200%;
+			  background: #FFF;
+			  z-index: -1;
+			  -webkit-transform:translate(-25%, -25%) scale(0);
+			      -ms-transform:translate(-25%, -25%) scale(0);
+			          transform:translate(-25%, -25%) scale(0);
+			  -webkit-transition: -webkit-transform .5s;
+			          transition:         transform .5s;
+			  -webkit-filter: blur(0px);
+			  -moz-filter: blur(0px);
+			  -o-filter: blur(0px);
+			  -ms-filter: blur(0px);
+			  filter: blur(0px);
+			  border-radius:50%;
+			}
+			div.card-1:hover {
+			  background: rgba(255,255,255,0.6);
+/*			  color: #fff;*/
+			}
+			div.card-1:hover:before {
+			  -webkit-transform: translate(-25%, -25%) scale(1);
+			      -ms-transform: translate(-25%, -25%) scale(1);
+			          transform: translate(-25%, -25%) scale(1);
+			  -webkit-filter: blur(5px);
+			  -moz-filter: blur(5px);
+			  -o-filter: blur(5px);
+			  -ms-filter: blur(5px);
+			  filter: blur(5px);
+			}
+			
+
+			.card-1:hover {
+			  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+/*			  , 0 9px 8px rgba(251, 156, 68,0.30), 0 1px 1px rgba(252, 72, 49,0.22)*/
+			  
+			}
+
+			.card-2 {
+			  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+			  padding:25px 15px 15px 15px;
+			  background: #FFF;
+/*			  margin-left:15px;
+			  margin-right:15px;*/
+			}
+
+			.card-3 {
+			  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+			}
+
+			.card-4 {
+			  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+			}
+
+			.card-5 {
+			  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+			}
+			
+			pre {
+				background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.02) 50%);
+				background-size: 3em 3em;
+				background-origin: content-box;
+				white-space: pre;
+				word-spacing: normal;
+				word-break: normal;
+				line-height: 1.5;
+				font-size:1em;
+				border:none;
+				background-color:#FFF;
+/*				box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
+				transition: all 0.2s ease-in-out;
+			    margin-left: 10px !important;
+			    margin-right: 10px !important;
+			}
+
+			pre:hover {
+/*			  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
+			}
+			
+			.details-header {
+				position:fixed;
+				left:0;
+				right:0;
+				top:71px;
+				z-index:1000;
+			}
+			
+			.details-header h1 {
+				line-height:1.5em;
+			}
+			
+			.details-body {
+				margin-top:100px;
+				margin-bottom:25px;
+			}
+			
+			div[marked] h1:first-of-type {
+				display:none;
+			}
+			
+			.btn-primary {
+				background-color: #FC4831;
+			    border-color: #DC3F2B;
+			}
+			
+			.btn-default:active, .btn-default:hover, .btn-default:focus {
+				background-color: #FAFAFA;
+			}
+			
+			.btn-primary:active, .btn-primary:hover, .btn-primary:focus {
+				background-color: #DC3F2B;
+			}
+			
+			div[marked] img {
+				max-width: 100%;
+			}
+			
+
+			[ui-view].ng-enter, [ui-view].ng-leave {
+				position:relative;
+				z-index:1000;
+			  -webkit-transition: all .24s ease-in-out;
+			  -moz-transition: all    .24s ease-in-out;
+			  -o-transition: all      .24s ease-in-out;
+			  transition: all         .24s ease-in-out;
+			}
+			
+			[ui-view].ng-enter div.controller, [ui-view].ng-leave div.controller {
+/*				position:absolute;*/
+/*				left:15%;*/
+			}
+
+			[ui-view].ng-enter {
+			  opacity: 0;
+			  -webkit-filter: blur(15px);
+			  -moz-filter: blur(15px);
+			  -o-filter: blur(15px);
+			  -ms-filter: blur(15px);
+			  filter: blur(15px);
+			}
+
+			[ui-view].ng-enter-active {
+			  opacity: 1;
+			  -webkit-filter: blur(0px);
+			  -moz-filter: blur(0px);
+			  -o-filter: blur(0px);
+			  -ms-filter: blur(0px);
+			  filter: blur(0px);
+			}
+
+			[ui-view].ng-leave {
+				display:none;
+			  opacity: 1;
+			  -webkit-filter: blur(0px);
+			  -moz-filter: blur(0px);
+			  -o-filter: blur(0px);
+			  -ms-filter: blur(0px);
+			  filter: blur(0px);
+			}
+
+			[ui-view].ng-leave-active {
+			  opacity: 0;
+			  -webkit-filter: blur(15px);
+			  -moz-filter: blur(15px);
+			  -o-filter: blur(15px);
+			  -ms-filter: blur(15px);
+			  filter: blur(15px);
+			}
+/*			.container hr {
+				border-top:1px solid #FA6C3F !important;
+
+			}*/
+			
+			.footer-container {
+/*				position:fixed;
+				bottom:0;
+				left:0;
+				right:0;*/
+			}
 		</style>
     </head>
     <body ng-app="PackageCatalogApp">
@@ -37,98 +294,52 @@
 
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                </button> -->
+                <a class="navbar-brand" ui-sref="packages">PackageCatalog.io</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		        <form class="navbar-form pull-right" role="search">
+		         <div class="input-group">
+		             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+		             <div class="input-group-btn">
+		                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+		             </div>
+		         </div>
+		         </form>
+            </div> -->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
 
     <!-- Page Content -->
-    <div class="container" ng-controller="list-controller">
 
-        <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Recent Packages
-                    <small></small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <!-- Projects Row -->
-        <div class="row" ng-repeat="group in packages track by $index">
-            <div class="col-md-4 portfolio-item" ng-repeat="package in group track by package.id">
-                <a href="{{package.url}}">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="{{package.url}}">{{package.title}}</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
+			<div class="container-shade details-header">
+				<div class="container">
+					<div class="row">
+				        <div class="col-lg-12">
+				        </div>
+					</div>
+				</div>
+			</div>		
+		<div ui-view>
 
-        <hr>
+		</div>
 
-        <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
+    <div class="container footer-container">
+		<br />
+		<hr />
         <!-- Footer -->
         <footer>
             <div class="row">
@@ -142,9 +353,17 @@
     </div>
     <!-- /.container -->
 
-
+		<script src="js/marked.js"></script>
+		<script src="js/angular-marked.js"></script>
      	<script src="js/bootstrap.js"></script>
 		<script src="app/app.js"></script>
-		<script src="app/list-controller.js"></script>
+		<script src="views/app.views.js"></script>
+		<script src="views/PackageList/module.js"></script>
+		<script src="views/PackageList/routes.js"></script>
+		<script src="views/PackageList/recent.controller.js"></script>
+		<script src="views/PackageList/by-author.controller.js"></script>
+		<script src="views/PackageDetails/module.js"></script>
+		<script src="views/PackageDetails/routes.js"></script>
+		<script src="views/PackageDetails/details.controller.js"></script>
     </body>
 </html>

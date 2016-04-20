@@ -10,6 +10,12 @@
 import Router
 
 public struct PackageListRouter {
+    
+    static func getNameParameter(from request: Request) -> String {
+        guard let nameString = request.pathParameters["name"] else { return "" }
+        return nameString
+    }
+    
     public static func getRouter() -> Router {
         return Router() { route in
             
@@ -18,6 +24,15 @@ public struct PackageListRouter {
             route.get("/") { request in
                 var structuredPackages = [StructuredData]()
                 for package in packageDatasource.getAll() {
+                    structuredPackages.append(package.structuredData)
+                }
+                return Response(status: .ok, content: StructuredData.from(structuredPackages))
+            }
+            
+            route.get("/author/:name") { request in
+                var structuredPackages = [StructuredData]()
+                
+                for package in packageDatasource.getAuthor(by: PackageListRouter.getNameParameter(from: request)) {
                     structuredPackages.append(package.structuredData)
                 }
                 return Response(status: .ok, content: StructuredData.from(structuredPackages))

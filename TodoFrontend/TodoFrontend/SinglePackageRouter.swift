@@ -1,5 +1,5 @@
 //
-//  PackageRouter.swift
+//  SinglePackageRouter.swift
 //  TodoFrontend
 //
 //  Created by Scott Byrns on 4/16/16.
@@ -7,7 +7,7 @@
 //
 import Router
 
-public struct PackageRouter {
+public struct SinglePackageRouter {
     public static func getRouter() -> Router {
         return Router() { route in
             

@@ -35,4 +35,14 @@ struct PackageDatasource {
         return PackageDatasource.packages[id]
     }
     
+    func getAuthor(by name: String) -> [PackageModel] {
+        var packages = [PackageModel]()
+        for (_, package) in PackageDatasource.packages {
+            if package.author == name {
+                packages.append(package)
+            }
+        }
+        return packages
+    }
+    
 }

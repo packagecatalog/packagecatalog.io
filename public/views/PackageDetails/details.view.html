@@ -1,0 +1,82 @@
+<div class="controller">
+	<!-- <div style="background:#AAA"> -->
+		<div class="container-shade details-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-xs-7">
+						<span style="margin:12px 12px 12px 0; display:inline-block;height:74px;width:74px; background:#FDC5CB; border-radius:50px" class="pull-left">
+							<img height="70" width="70" style="border-radius:50px;margin-left:2px;margin-top:2px" ng-if="Details.model.org.avatar_url" src="{{Details.model.org.avatar_url}}" ui-sref="packages-by-author({author:Details.model.author})" />
+						</span>
+						
+						<h1>{{Details.model.title}} <small class="hidden-xs">Version {{Details.model.major}}.{{Details.model.minor}}</small></h1>
+					</div>
+					<div class="col-md-5 col-xs-5 text-right">
+						<!-- <br /> -->
+
+						<!-- <a href="{{Details.model.url}}"><i class="fa fa-github" style="font-size:50px" aria-hidden="true"></i></a> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container details-body">
+				<div class="row">
+
+					<div class="col-md-6" style="padding-left:25px;">
+						<h6 ui-sref="packages-by-author({author:Details.model.author})">By {{Details.model.author}}</h6>
+						<p>{{Details.model.overview}}</p>
+					</div>
+					<div class="col-md-6 text-right hidden-xs hidden-sm">
+						<br />
+						<div class="btn-group" role="group" aria-label="...">
+						  <button type="button" class="btn btn-default card-1" ng-click="Details.active = 0" ng-class="{'btn-primary' : Details.active == 0}">Readme</button>
+						  <button type="button" class="btn btn-default card-1" ng-click="Details.active = 1" ng-class="{'btn-primary' : Details.active == 1}">Dependency</button>
+							<button class="btn btn-default card-1" ng-click="Details.openOnGithub()">
+								<i class="fa fa-github" aria-hidden="true"></i> Clone on Github
+							</button>
+						  <!-- <button type="button" class="btn btn-default" ng-click="Details.active = 0">Right</button> -->
+						</div>
+					</div>
+				</div>
+
+		
+		</div>
+		<div class="container">
+			<!-- <hr  /> -->
+		<div class="row">
+			<div class="col-md-12">
+					<div ng-show="Details.active == 0" class="col-md-12 card-2">
+						<div marked="Details.model.readme">
+							<!-- {{Details.model.readme}} -->
+						</div>
+					</div>
+					<div ng-show="Details.active == 1" class="col-md-12 card-2">
+						<pre>
+<code>
+import PackageDescription
+
+let package = Package(
+    dependencies: [
+        .Package(url: "{{Details.model.url}}", majorVersion: {{Details.model.major}}, minor: {{Details.model.minor}})
+    ]
+)</code>
+						</pre>
+					</div>
+
+			</div>
+			<!-- <div class="col-md-3">
+				<div class="">
+				<h3>Dependencies</h3>
+				<ul class="list-item-group">
+					<li class="list-item">TODO</li>
+				</ul>
+				<hr />
+				<h3>Dependents</h3>
+				<ul class="list-item-group">
+					<li class="list-item">TODO</li>
+				</ul>
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+</div>

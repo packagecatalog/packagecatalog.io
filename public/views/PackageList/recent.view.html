@@ -1,0 +1,65 @@
+<div class="controller">
+	<div class="container-shade details-header">
+		<div class="container">
+			<div class="row">
+		        <div class="col-lg-12">
+		            <h1>{{List.title}}
+		            </h1>
+		        </div>
+			</div>
+		</div>
+	</div>
+	<div class="container details-body">
+    <!-- /.row -->
+
+    <!-- Projects Row -->
+    <div class="row" ng-repeat="group in List.packages track by $index">
+        <div class="col-md-4" ng-repeat="package in group track by package.id">
+			<div class="portfolio-item card-1" ui-sref="package-details({id:package.id})">
+                <h3 class="text-center">
+                    {{package.title}}
+                </h3>
+				<h6 class="text-center">
+					<small>Major: {{package.major}} Minor: {{package.minor}}</small>
+				</h6>
+				<h6 class="text-center" ui-sref="packages-by-author({author:package.author})">{{package.author}}</h6>
+                <p class="text-center">{{package.overview}}</p>
+			</div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- <hr> -->
+
+    <!-- Pagination -->
+    <!-- <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+</div>
+    <!-- /.row -->
+	
+</div>
